@@ -33,7 +33,7 @@ var defaultStyle = new ol.style.Style({
 var vectorLayer = new ol.layer.Vector({
   style:defaultStyle,
   source: new ol.source.Vector({
-    url: 'https://raw.githubusercontent.com/rifkifau/belajar-geostats/master/kalteng.geojson?token=AXp_7Qh9KhWbm_Drxu42KohSac6SPUuwks5bTxNVwA%3D%3D',
+    url: 'kalteng.geojson',
    format: new ol.format.GeoJSON({
               defaultDataProjection:'EPSG:4326',
               featureProjection:'EPSG:3857'
@@ -61,20 +61,20 @@ var map = new ol.Map({
  * do the themmatic
  */
 function drawIt(){
-var JumlahPend = new Array();
+var jumlahPend = new Array();
 vectorLayer.getSource().getFeatures().forEach(function(feat) {
-JumlahPend.push(feat.get("jumlah"))
+jumlahPend.push(feat.get("jumlah"))
 });
-console.info("JumlahPend",JumlahPend);
-getAndSetClassesFromData(JumlahPend, getClassNum(), getMethod());
+console.info("jumlahPend",jumlahPend);
+getAndSetClassesFromData(jumlahPend, getClassNum(), getMethod());
 vectorLayer.setStyle(setStyle);
 }
 
 
 /**
- * @data {Array} the array of numbers (these are the pop data for all countries)
- * @numclasses {Integer} get the number of classes
- * @method {String}  get the classification method
+ * get the array of numbers (these are the pop data for all countries)
+ * get the classification method
+ * get the number of classes
  *
  *
  * set geostats object
@@ -139,7 +139,7 @@ function setStyle(feat,res) {
   };
 
   var textStyleConfig = {};
-  var label = res < 5000 ? feat.get('Kabupaten') : '';
+  var label = res < 10000 ? feat.get('Kabupaten')+'\n Penduduk:'+feat.get("jumlah") : '';
   if (classIndex !== -1) {
     polyStyleConfig = {
       stroke: new ol.style.Stroke({
@@ -180,7 +180,6 @@ function setStyle(feat,res) {
   return [style, textStyle];
 }
 
-//*************helper functions this point forward***************//
 
 function verifyClassFromVal(rangevals, val) {
   var retIndex = -1;
@@ -191,6 +190,7 @@ function verifyClassFromVal(rangevals, val) {
   }
   return retIndex;
 }
+//helper functions this point forward
 
 /**
  *   get the user selected method
@@ -245,3 +245,37 @@ function getMaxPoly(polys) {
 
   return polyObj[polyObj.length - 1].poly;
 }
+
+
+
+// http://stackoverflow.com/questions/14484787/wrap-text-in-javascript
+function wordWrap(str, maxWidth) {
+    var newLineStr = "\n"; done = false; res = '';
+    do {
+        found = false;
+        // Inserts new line at first whitespace of the line
+        for (i = maxWidth - 1; i >= 0; i--) {
+            if (testWhite(str.charAt(i))) {
+                res = res + [str.slice(0, i), newLineStr].join('');
+                str = str.slice(i + 1);
+                found = true;
+                break;
+            }
+        }
+        // Inserts new line at maxWidth position, the word is too long to wrap
+        if (!found) {
+            res += [str.slice(0, maxWidth), newLineStr].join('');
+            str = str.slice(maxWidth);
+        }
+
+        if (str.length < maxWidth)
+            done = true;
+    } while (!done);
+
+    return res;
+}
+
+function testWhite(x) {
+    var white = new RegExp(/^\s$/);
+    return white.test(x.charAt(0));
+};
