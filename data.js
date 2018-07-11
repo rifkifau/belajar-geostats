@@ -33,7 +33,7 @@ var defaultStyle = new ol.style.Style({
 var vectorLayer = new ol.layer.Vector({
   style:defaultStyle,
   source: new ol.source.Vector({
-    url: 'https://gist.githubusercontent.com/ptsagkis/dacbe5a42856dee041294b54579095d4/raw/730879d0d4909622b273818235b9c7f510bab5ee/countries_siplified.geojson',
+    url: 'kalteng.geojson',
    format: new ol.format.GeoJSON({
               defaultDataProjection:'EPSG:4326',
               featureProjection:'EPSG:3857'
@@ -61,12 +61,12 @@ var map = new ol.Map({
  * do the themmatic
  */
 function drawIt(){
-var countryPopVals = new Array();
+var jumlahPend = new Array();
 vectorLayer.getSource().getFeatures().forEach(function(feat) {
-countryPopVals.push(feat.get("POP2005"))
+jumlahPend.push(feat.get("jumlah"))
 });
-console.info("countryPopVals",countryPopVals);
-getAndSetClassesFromData(countryPopVals, getClassNum(), getMethod());
+console.info("jumlahPend",jumlahPend);
+getAndSetClassesFromData(jumlahPend, getClassNum(), getMethod());
 vectorLayer.setStyle(setStyle);
 }
 
@@ -109,7 +109,7 @@ function getAndSetClassesFromData(data, numclasses, method) {
  var colors_x = chroma.scale([colorFrom, colorTo]).colors(numclasses)
 
 serie.setColors(colors_x);
-document.getElementById('legend').innerHTML = serie.getHtmlLegend(null, "World Population</br> Method:"+methodLabel, 1);
+document.getElementById('legend').innerHTML = serie.getHtmlLegend(null, "Penduduk KalTeng</br> Metode:"+methodLabel, 1);
 classSeries = serie;
 classColors = colors_x;
 }
@@ -121,7 +121,7 @@ classColors = colors_x;
  * function to verify the style for the feature
  */
 function setStyle(feat,res) {
-  var currVal = parseFloat(feat.get("POP2005"));
+  var currVal = parseFloat(feat.get("jumlah"));
   var bounds = classSeries.bounds;
   var numRanges = new Array();
   for (var i = 0; i < bounds.length-1; i++) {
@@ -139,7 +139,7 @@ function setStyle(feat,res) {
   };
 
   var textStyleConfig = {};
-  var label = res < 10000 ? feat.get('NAME')+'\n Population:'+feat.get("POP2005") : '';
+  var label = res < 10000 ? feat.get('Kabupaten')+'\n Penduduk:'+feat.get("jumlah") : '';
   if (classIndex !== -1) {
     polyStyleConfig = {
       stroke: new ol.style.Stroke({
