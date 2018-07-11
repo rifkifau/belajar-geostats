@@ -50,7 +50,7 @@ var map = new ol.Map({
   ],
   target: 'map',
   view: new ol.View({
-    center: [-2.465325, 115.874572],
+    center: [-1.513050, 113.582546],
     zoom: 7
   })
 });
