@@ -63,7 +63,7 @@ var map = new ol.Map({
 function drawIt(){
 var jumlahPend = new Array();
 vectorLayer.getSource().getFeatures().forEach(function(feat) {
-jumlahPend.push(feat.get("jumlah"))
+jumlahPend.push(feat.get("Jumlah"))
 });
 console.info("jumlahPend",jumlahPend);
 getAndSetClassesFromData(jumlahPend, getClassNum(), getMethod());
@@ -121,7 +121,7 @@ classColors = colors_x;
  * function to verify the style for the feature
  */
 function setStyle(feat,res) {
-  var currVal = parseFloat(feat.get("jumlah"));
+  var currVal = parseFloat(feat.get("Jumlah"));
   var bounds = classSeries.bounds;
   var numRanges = new Array();
   for (var i = 0; i < bounds.length-1; i++) {
@@ -139,7 +139,7 @@ function setStyle(feat,res) {
   };
 
   var textStyleConfig = {};
-  var label = res < 10000 ? feat.get('Kabupaten')+'\n Penduduk:'+feat.get("jumlah") : '';
+  var label = res < 10000 ? feat.get('Kabupaten')+'\n Penduduk:'+feat.get("Jumlah") : '';
   if (classIndex !== -1) {
     polyStyleConfig = {
       stroke: new ol.style.Stroke({
