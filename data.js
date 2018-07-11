@@ -33,7 +33,7 @@ var defaultStyle = new ol.style.Style({
 var vectorLayer = new ol.layer.Vector({
   style:defaultStyle,
   source: new ol.source.Vector({
-    url: 'kalteng.geojson',
+    url: 'https://raw.githubusercontent.com/rifkifau/belajar-geostats/master/kalteng.geojson?token=AXp_7Qh9KhWbm_Drxu42KohSac6SPUuwks5bTxNVwA%3D%3D',
    format: new ol.format.GeoJSON({
               defaultDataProjection:'EPSG:4326',
               featureProjection:'EPSG:3857'
