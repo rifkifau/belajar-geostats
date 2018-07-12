@@ -5,15 +5,15 @@ html, body, .map {
 
 #pengaturan {
   position: absolute;
-  left: 10px;
-  bottom: 10px;
+  left: 20px;
+  bottom: 5px;
   z-index: 100
 }
 
 #legend {
   position: absolute;
-  left: 10px;
-  bottom: 50px;
+  left: 20px;
+  bottom: 30px;
   z-index: 100
 }
 .geostats-legend div {
