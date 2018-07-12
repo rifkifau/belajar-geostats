@@ -107,7 +107,7 @@ function getAndSetClassesFromData(data, numclasses, method) {
   alert("error: Tentukan Metode Klasifikasi!.")
   }
  // var colors_x = chroma.scale([colorFrom, colorTo]).colors(numclasses)
- var colors_x = chroma.scale('BuPu').colors(numclasses);
+ var colors_x = chroma.scale(function getColor()).colors(numclasses);
 
 serie.setColors(colors_x);
 document.getElementById('legend').innerHTML = serie.getHtmlLegend(null, "Penduduk KalTeng (Jiwa)</br> Metode:" +methodLabel, 1);
@@ -198,6 +198,15 @@ function verifyClassFromVal(rangevals, val) {
  */
 function getMethod(){
 var elem = document.getElementById("methodselector");
+var val = elem.options[elem.selectedIndex].value;
+return val;
+}
+
+/**
+ *   get the user selected method
+ */
+function getColor(){
+var elem = document.getElementById("colorselector");
 var val = elem.options[elem.selectedIndex].value;
 return val;
 }
