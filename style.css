@@ -9,14 +9,13 @@ html, body, .map {
   top: 10 px;
   z-index: 100
 }
-#legend {
+
+.geostats-legend div {
   position: absolute;
   left: 10 px;
   bottom: 10 px;
+  margin: 3px 10px 5px 10px;
   z-index: 99
-}
-.geostats-legend div {
-
 }
 
 .geostats-legend-title {
