@@ -84,7 +84,7 @@ vectorLayer.setStyle(setStyle);
  */
 function getAndSetClassesFromData(data, numclasses, method) {
   var serie = new geostats(data);
-  var legenLabel = "";
+  var legenLabel = "Metode";
   if (method === "method_EI") {
     serie.getClassEqInterval(numclasses);
     methodLabel = "Equal Interval";
