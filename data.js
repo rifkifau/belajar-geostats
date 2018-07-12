@@ -109,7 +109,7 @@ function getAndSetClassesFromData(data, numclasses, method) {
  var colors_x = chroma.scale([colorFrom, colorTo]).colors(numclasses)
 
 serie.setColors(colors_x);
-document.getElementById('legend').innerHTML = serie.getHtmlLegend(null, "Penduduk KalTeng (Jiwa)</br> Metode:"+methodLabel, 1);
+document.getElementById('legend').innerHTML = serie.getHtmlLegend(null, "Penduduk KalTeng (Jiwa)</br> Metode:" +methodLabel, 1);
 classSeries = serie;
 classColors = colors_x;
 }
