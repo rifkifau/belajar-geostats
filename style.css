@@ -11,11 +11,8 @@ html, body, .map {
 }
 
 .geostats-legend div {
-  position: absolute;
-  left: 10 px;
-  bottom: 10 px;
-  margin: 3px 10px 5px 10px;
-  z-index: 99
+  margin: 20px 10px 5px 10px;
+
 }
 
 .geostats-legend-title {
