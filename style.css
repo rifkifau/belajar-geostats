@@ -17,6 +17,7 @@ html, body, .map {
 }
 .geostats-legend div {
   margin: 2px 10px 5px 10px;
+  background-color: rgba(212, 221, 244, 0.5)
 
 }
 
