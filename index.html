@@ -12,24 +12,22 @@
     <title>Belajar Geostats</title>
   </head>
   <body>
-  Metode Klasifikasi:
-    <select id="methodselector" class="form-control">
-      <option value="method_EI" >Equal Interval</option>
-      <option value="method_Q" selected>Quantile</option>
-      <option value="method_SD" >Standard Deviation</option>
-      <option value="method_AP" >Arithmetic Progression</option>
-      <option value="method_GP" >Geometric Progression</option>
-      <option value="method_CJ">Class Jenks</option>
-    </select>
-    Jumlah Kelas:
-      <input type="number" id="classcount" min="1" value="5" max="10">
-      <input type="button" id="drawitbtn"  value='Tampilkan Hasil'/>
-
     <div id="map" class="map">
-      <div id="legend" style="position:absolute; left: 50%; z-index: 99"></div>
+      Metode Klasifikasi:
+        <select id="methodselector" class="form-control">
+          <option value="method_EI" >Equal Interval</option>
+          <option value="method_Q" selected>Quantile</option>
+          <option value="method_SD" >Standard Deviation</option>
+          <option value="method_AP" >Arithmetic Progression</option>
+          <option value="method_GP" >Geometric Progression</option>
+          <option value="method_CJ">Class Jenks</option>
+        </select>
+        Jumlah Kelas:
+          <input type="number" id="classcount" min="1" value="5" max="10">
+          <input type="button" id="drawitbtn"  value='Tampilkan Hasil'/>
+      <div id="legend"</div>
     </div>
 
-    <!-- <div id='legend'></div> -->
     <script src="data.js" charset="utf-8"></script>
   </body>
 </html>
