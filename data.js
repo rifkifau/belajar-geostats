@@ -107,7 +107,7 @@ function getAndSetClassesFromData(data, numclasses, method) {
   alert("error: Tentukan Metode Klasifikasi!.")
   }
  // var colors_x = chroma.scale([colorFrom, colorTo]).colors(numclasses)
- var colors_x = chroma.scale(BuPu).colors(numclasses)
+ var colors_x = chroma.scale('BuPu').colors(numclasses);
 
 serie.setColors(colors_x);
 document.getElementById('legend').innerHTML = serie.getHtmlLegend(null, "Penduduk KalTeng (Jiwa)</br> Metode:" +methodLabel, 1);
