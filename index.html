@@ -13,18 +13,20 @@
   </head>
   <body>
     <div id="map" class="map">
-      Metode Klasifikasi:
-        <select id="methodselector" class="form-control">
-          <option value="method_EI" >Equal Interval</option>
-          <option value="method_Q" selected>Quantile</option>
-          <option value="method_SD" >Standard Deviation</option>
-          <option value="method_AP" >Arithmetic Progression</option>
-          <option value="method_GP" >Geometric Progression</option>
-          <option value="method_CJ">Class Jenks</option>
-        </select>
-        Jumlah Kelas:
-          <input type="number" id="classcount" min="1" value="5" max="10">
-          <input type="button" id="drawitbtn"  value='Tampilkan Hasil'/>
+      <div class="pengaturan">
+        <span> Metode Klasifikasi: </span>
+          <select id="methodselector" class="form-control">
+            <option value="method_EI" >Equal Interval</option>
+            <option value="method_Q" selected>Quantile</option>
+            <option value="method_SD" >Standard Deviation</option>
+            <option value="method_AP" >Arithmetic Progression</option>
+            <option value="method_GP" >Geometric Progression</option>
+            <option value="method_CJ">Class Jenks</option>
+          </select>
+        <span> Jumlah Kelas: </span>
+            <input type="number" id="classcount" min="1" value="5" max="10">
+            <input type="button" id="drawitbtn"  value='Tampilkan Hasil'/>
+        </div>
       <div id="legend"</div>
     </div>
 
