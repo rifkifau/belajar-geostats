@@ -104,7 +104,7 @@ function getAndSetClassesFromData(data, numclasses, method) {
     serie.getClassJenks(numclasses);
     methodLabel = "Class Jenks";
   } else {
-  alert("error: no such method.")
+  alert("error: Tentukan Metode Klasifikasi!.")
   }
  var colors_x = chroma.scale([colorFrom, colorTo]).colors(numclasses)
 
