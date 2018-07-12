@@ -84,7 +84,7 @@ vectorLayer.setStyle(setStyle);
  */
 function getAndSetClassesFromData(data, numclasses, method) {
   var serie = new geostats(data);
-  var legenLabel = "Metode";
+  var legenLabel = "";
   if (method === "method_EI") {
     serie.getClassEqInterval(numclasses);
     methodLabel = "Equal Interval";
@@ -109,7 +109,7 @@ function getAndSetClassesFromData(data, numclasses, method) {
  var colors_x = chroma.scale([colorFrom, colorTo]).colors(numclasses)
 
 serie.setColors(colors_x);
-document.getElementById('legend').innerHTML = serie.getHtmlLegend(null, "Penduduk KalTeng</br> Metode:"+methodLabel, 1);
+document.getElementById('legend').innerHTML = serie.getHtmlLegend(null, "Penduduk KalTeng (Jiwa)</br> Metode:"+methodLabel, 1);
 classSeries = serie;
 classColors = colors_x;
 }
