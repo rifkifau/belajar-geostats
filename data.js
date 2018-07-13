@@ -27,6 +27,11 @@ var defaultStyle = new ol.style.Style({
   })
 });
 
+function getKabTahun(){
+var elem = document.getElementById("kabselector");
+var val = elem.options[elem.selectedIndex].value;
+return val;
+}
 
 //our methods here
 
