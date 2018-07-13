@@ -27,18 +27,18 @@ var defaultStyle = new ol.style.Style({
   })
 });
 
-function getKabTahun(){
-var elem = document.getElementById("kabselector");
+function getDataTabel(){
+var elem = document.getElementById("dataselector");
 var val = elem.options[elem.selectedIndex].value;
 return val;
 }
 
 //our methods here
-
+var datakabtahun = getKabTahun();
 var vectorLayer = new ol.layer.Vector({
   style:defaultStyle,
   source: new ol.source.Vector({
-    url: getKabTahun() + '.geojson',
+    url: 'kalteng2013.geojson',
    format: new ol.format.GeoJSON({
               defaultDataProjection:'EPSG:4326',
               featureProjection:'EPSG:3857'
@@ -68,9 +68,9 @@ var map = new ol.Map({
 function drawIt(){
 var jumlahPend = new Array();
 vectorLayer.getSource().getFeatures().forEach(function(feat) {
-jumlahPend.push(feat.get("Jumlah"))
+jumlahPend.push(feat.get(getDataTabel()))
 });
-console.info("jumlahPend",jumlahPend);
+console.info(getDataTabel(),jumlahPend);
 getAndSetClassesFromData(jumlahPend, getClassNum(), getMethod());
 vectorLayer.setStyle(setStyle);
 }
@@ -127,7 +127,7 @@ classColors = colors_x;
  * function to verify the style for the feature
  */
 function setStyle(feat,res) {
-  var currVal = parseFloat(feat.get("Jumlah"));
+  var currVal = parseFloat(feat.get(getDataTabel()));
   var bounds = classSeries.bounds;
   var numRanges = new Array();
   for (var i = 0; i < bounds.length-1; i++) {
@@ -145,7 +145,7 @@ function setStyle(feat,res) {
   };
 
   var textStyleConfig = {};
-  var label = res < 10000 ? feat.get('Kabupaten')+'\n Penduduk:'+feat.get("Jumlah") : '';
+  var label = res < 10000 ? feat.get('Kabupaten')+'\n Penduduk:'+feat.get(getDataTabel()) : '';
   if (classIndex !== -1) {
     polyStyleConfig = {
       stroke: new ol.style.Stroke({
