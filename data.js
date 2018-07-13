@@ -34,7 +34,6 @@ return val;
 }
 
 //our methods here
-var datakabtahun = getKabTahun();
 var vectorLayer = new ol.layer.Vector({
   style:defaultStyle,
   source: new ol.source.Vector({
@@ -198,14 +197,7 @@ function verifyClassFromVal(rangevals, val) {
 }
 //helper functions this point forward
 
-/**
- *   get the user selected kabupaten & tahun
- */
-function getKabTahun(){
-var elem = document.getElementById("kabselector");
-var val = elem.options[elem.selectedIndex].value;
-return val;
-}
+
 
 /**
  *   get the user selected method
