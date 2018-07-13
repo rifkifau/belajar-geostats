@@ -38,7 +38,7 @@ return val;
 var vectorLayer = new ol.layer.Vector({
   style:defaultStyle,
   source: new ol.source.Vector({
-    url: getKabTahun(),
+    url: getKabTahun() + '.geojson',
    format: new ol.format.GeoJSON({
               defaultDataProjection:'EPSG:4326',
               featureProjection:'EPSG:3857'
