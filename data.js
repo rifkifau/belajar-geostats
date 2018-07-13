@@ -159,7 +159,7 @@ function setStyle(feat,res) {
   };
 
   var textStyleConfig = {};
-  var label = res < 10000 ? feat.get('Kabupaten')+'\n'+feat.get(getDataTabel())+' (jiwa)';
+  var label = res < 10000 ? feat.get('Kabupaten')+'\n'+feat.get(getDataTabel())+' (jiwa)':'';
   if (classIndex !== -1) {
     polyStyleConfig = {
       stroke: new ol.style.Stroke({
