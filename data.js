@@ -27,11 +27,15 @@ var defaultStyle = new ol.style.Style({
   })
 });
 
+//Menyimpan data tabel yang ditentukan users dari select option di index.html (dataselector)
 function getDataTabel(){
 var elem = document.getElementById("dataselector");
 var val = elem.options[elem.selectedIndex].value;
 return val;
 }
+
+//Menyimpan nama kolom yang dipilih dalam variabel namakolom untuk dijadikan bahan if else
+var namakolom = getDataTabel();
 
 //our methods here
 var vectorLayer = new ol.layer.Vector({
@@ -64,6 +68,7 @@ var map = new ol.Map({
 /**
  * do the themmatic
  */
+ //Mengolah data tabel dari function getDataTabel()
 function drawIt(){
 var jumlahPend = new Array();
 vectorLayer.getSource().getFeatures().forEach(function(feat) {
@@ -89,6 +94,16 @@ vectorLayer.setStyle(setStyle);
 function getAndSetClassesFromData(data, numclasses, method) {
   var serie = new geostats(data);
   var legenLabel = "";
+  if (namakolom === "Jumlah") {
+    keterangannya = "Total Penduduk";
+  } else if (namakolom === "Laki_Laki") {
+    keterangannya = "Jumlah Laki-laki";
+  } else if (namakolom === "Perempuan") {
+    keterangannya = "Jumlah Perempuan";
+  } else {
+  alert("error: Tentukan Datanya Dulu Bro!")
+  }
+
   if (method === "method_EI") {
     serie.getClassEqInterval(numclasses);
     methodLabel = "Equal Interval";
@@ -114,7 +129,7 @@ function getAndSetClassesFromData(data, numclasses, method) {
  var colors_x = chroma.scale(getColor()).colors(numclasses);
 
 serie.setColors(colors_x);
-document.getElementById('legend').innerHTML = serie.getHtmlLegend(null, "Penduduk KalTeng (Jiwa)</br> Metode:" +methodLabel, 1);
+document.getElementById('legend').innerHTML = serie.getHtmlLegend(null, keterangannya+ "(Jiwa)</br> Metode:" +methodLabel, 1);
 classSeries = serie;
 classColors = colors_x;
 }
@@ -211,6 +226,7 @@ return val;
 /**
  *   get the user selected color
  */
+ //Menyimpan nilai warna yang ditentukan users dari select option di index.html (colorselector)
 function getColor(){
 var elem = document.getElementById("colorselector");
 var val = elem.options[elem.selectedIndex].value;
