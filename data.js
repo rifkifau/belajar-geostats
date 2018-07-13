@@ -12,7 +12,7 @@ var defaultStyle = new ol.style.Style({
     color: 'rgba(255, 255, 255, 0.3)'
   }),
   stroke: new ol.style.Stroke({
-    color: 'rgba(0, 255, 0, 1)',
+    color: 'rgba(0, 0, 0, 0.8)',
     width: 1
   }),
   text: new ol.style.Text({
@@ -163,7 +163,7 @@ function setStyle(feat,res) {
   if (classIndex !== -1) {
     polyStyleConfig = {
       stroke: new ol.style.Stroke({
-        color: 'rgba(0, 0, 255, 1.0)',
+        color: 'rgba(0, 0, 0, 1)',
         width: 1
       }),
       fill: new ol.style.Stroke({
