@@ -94,11 +94,11 @@ vectorLayer.setStyle(setStyle);
 function getAndSetClassesFromData(data, numclasses, method) {
   var serie = new geostats(data);
   var legenLabel = "";
-  if (namakolom === "Jumlah") {
+  if (getDataTabel() === "Jumlah") {
     keterangannya = "Total Penduduk";
-  } else if (namakolom === "Laki_Laki") {
+  } else if (getDataTabel() === "Laki_Laki") {
     keterangannya = "Jumlah Laki-laki";
-  } else if (namakolom === "Perempuan") {
+  } else if (getDataTabel() === "Perempuan") {
     keterangannya = "Jumlah Perempuan";
   } else {
   alert("error: Tentukan Datanya Dulu Bro!")
