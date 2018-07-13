@@ -33,7 +33,7 @@ var defaultStyle = new ol.style.Style({
 var vectorLayer = new ol.layer.Vector({
   style:defaultStyle,
   source: new ol.source.Vector({
-    url: 'kalteng.geojson',
+    url: getKabTahun()+'.geojson',
    format: new ol.format.GeoJSON({
               defaultDataProjection:'EPSG:4326',
               featureProjection:'EPSG:3857'
@@ -194,6 +194,15 @@ function verifyClassFromVal(rangevals, val) {
 //helper functions this point forward
 
 /**
+ *   get the user selected kabupaten & tahun
+ */
+function getKabTahun(){
+var elem = document.getElementById("kabselector");
+var val = elem.options[elem.selectedIndex].value;
+return val;
+}
+
+/**
  *   get the user selected method
  */
 function getMethod(){
@@ -203,7 +212,7 @@ return val;
 }
 
 /**
- *   get the user selected method
+ *   get the user selected color
  */
 function getColor(){
 var elem = document.getElementById("colorselector");
