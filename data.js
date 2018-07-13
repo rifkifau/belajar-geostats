@@ -34,8 +34,6 @@ var val = elem.options[elem.selectedIndex].value;
 return val;
 }
 
-//Menyimpan nama kolom yang dipilih dalam variabel namakolom untuk dijadikan bahan if else
-var namakolom = getDataTabel();
 
 //our methods here
 var vectorLayer = new ol.layer.Vector({
@@ -94,6 +92,8 @@ vectorLayer.setStyle(setStyle);
 function getAndSetClassesFromData(data, numclasses, method) {
   var serie = new geostats(data);
   var legenLabel = "";
+
+  //if else untuk legenda
   if (getDataTabel() === "Jumlah") {
     keterangannya = "Total Penduduk";
   } else if (getDataTabel() === "Laki_Laki") {
@@ -129,7 +129,7 @@ function getAndSetClassesFromData(data, numclasses, method) {
  var colors_x = chroma.scale(getColor()).colors(numclasses);
 
 serie.setColors(colors_x);
-document.getElementById('legend').innerHTML = serie.getHtmlLegend(null, keterangannya+ "(Jiwa)</br> Metode:" +methodLabel, 1);
+document.getElementById('legend').innerHTML = serie.getHtmlLegend(null, keterangannya+ " (Jiwa)</br> Metode: " +methodLabel, 1);
 classSeries = serie;
 classColors = colors_x;
 }
@@ -159,7 +159,7 @@ function setStyle(feat,res) {
   };
 
   var textStyleConfig = {};
-  var label = res < 10000 ? feat.get('Kabupaten')+'\n Penduduk:'+feat.get(getDataTabel()) : '';
+  var label = res < 10000 ? feat.get('Kabupaten')+'\n'+feat.get(getDataTabel())+' (jiwa)';
   if (classIndex !== -1) {
     polyStyleConfig = {
       stroke: new ol.style.Stroke({
